@@ -1,2 +1,2 @@
 # dummy-nw-builder
-application builder form nw.js
+application builder for nw.js
