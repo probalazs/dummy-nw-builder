@@ -21,6 +21,7 @@ module.exports = Object.freeze({
 		version: '',
 		architecture: '',
 		type: 'normal',
+		sourceFolder: '',
 		buildFolder: './build',
 		tmpFolder: './tmp',
 		platform: ''

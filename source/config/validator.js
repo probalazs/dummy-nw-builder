@@ -9,7 +9,8 @@ const VALIDATORS = [
 	platform,
 	type,
 	buildFolder,
-	tmpFolder
+	tmpFolder,
+	sourceFolder
 ];
 
 module.exports = { validate: validate };
@@ -55,6 +56,10 @@ function buildFolder(config) {
 
 function tmpFolder(config) {
 	return isValidPath(config.tmpFolder);
+}
+
+function sourceFolder(config) {
+	return isValidPath(config.sourceFolder);
 }
 
 function isValidPath(path) {
