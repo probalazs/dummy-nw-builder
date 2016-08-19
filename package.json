@@ -1,0 +1,25 @@
+{
+  "name": "dummy-nw-builder",
+  "version": "1.0.0",
+  "description": "application builder for nw.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/probalazs/dummy-nw-builder.git"
+  },
+  "keywords": [
+    "nw",
+    "node-webkit",
+    "nwjs",
+    "build"
+  ],
+  "author": "probalazs <probalazs@nyenyere.eu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/probalazs/dummy-nw-builder/issues"
+  },
+  "homepage": "https://github.com/probalazs/dummy-nw-builder#readme"
+}
