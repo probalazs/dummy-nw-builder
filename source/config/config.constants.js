@@ -25,5 +25,9 @@ module.exports = Object.freeze({
 		buildFolder: './build',
 		tmpFolder: './tmp',
 		platform: ''
+	},
+	NW_FILE_OPTIONS: {
+		prefix: 'nwjs',
+		extensions: { zip: 'zip', tarGz: 'tar.gz' }
 	}
 });
