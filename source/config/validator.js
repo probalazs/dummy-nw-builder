@@ -34,20 +34,17 @@ function version(config) {
 }
 
 function architecture(config) {
-	if (platformUtil.isOsx(config.platform)) {
-		return config.architecture === VALID_VALUES.architecture.x64;
-	} else {
-		return getValidValuesArray('architecture')
-			.includes(config.architecture);
-	}
+	return (platformUtil.isOsx(config.platform)) ?
+		config.architecture === VALID_VALUES.architecture.x64 :
+		isIncludes(VALID_VALUES.architecture, config.architecture);
 }
 
 function platform(config) {
-	return getValidValuesArray('platform').includes(config.platform);
+	return isIncludes(VALID_VALUES.platform, config.platform);
 }
 
 function type(config) {
-	return getValidValuesArray('type').includes(config.type);
+	return isIncludes(VALID_VALUES.type, config.type);
 }
 
 function buildFolder(config) {
@@ -66,7 +63,11 @@ function isValidPath(path) {
 	return typeof path === 'string' && path !== '';
 }
 
-function getValidValuesArray(key) {
-	let values = VALID_VALUES[key];
-	return Array.isArray(values) ? values : Object.values(values);
+function isIncludes(group, value) {
+	let values = getGroupValues(group);
+	return values.includes(value);
+}
+
+function getGroupValues(group) {
+	return Array.isArray(group) ? group : Object.values(group);
 }
