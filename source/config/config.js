@@ -16,7 +16,7 @@ module.exports = class Config {
 	}
 
 	constructor(userConfig) {
-		this._nw = '';
+		this._nw = {};
 		this._folders = {};
 		this._config = {};
 		
