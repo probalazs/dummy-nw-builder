@@ -3,7 +3,6 @@
 const platformUtil = require('../utils/platform'); 
 const VALID_VALUES = require('./config.constants').VALID_VALUES;
 const VALIDATORS = [
-	host,
 	version,
 	architecture,
 	platform,
@@ -21,10 +20,6 @@ function validate(config) {
 			throw new Error(`invalid config: ${validator.name}`);
 		}
 	});
-}
-
-function host(config) {
-	return /^https?.\/\//.test(config.host);
 }
 
 function version(config) {
