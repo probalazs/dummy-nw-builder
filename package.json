@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/probalazs/dummy-nw-builder/issues"
   },
-  "homepage": "https://github.com/probalazs/dummy-nw-builder#readme"
+  "homepage": "https://github.com/probalazs/dummy-nw-builder#readme",
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-config-pb-base": "git+https://github.com/probalazs/eslint-config-pb-base.git",
+    "eslint-config-pb-es6": "git+https://github.com/probalazs/eslint-config-pb-es6.git"
+  }
 }
