@@ -3,15 +3,37 @@
 const Promise = require('bluebird');
 const request = require('request');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = {
-    createFolderSync: createFolderSync,
+    mkdirWithParents: mkdirWithParents,
     download: download
 };
 
-function createFolderSync(folder) {
-    if (!_isFolderExist(folder)) {
+function mkdirWithParents(folder) {
+    _mkdirParent(folder);
+    if (!_isDirectoryExist(folder)) {
         fs.mkdirSync(folder);
+    }
+}
+
+function _mkdirParent(route) {
+    let parent = _getParentDirectory(route);
+    if (!_isDirectoryExist(parent)) {
+        mkdirWithParents(parent);
+    }
+}
+
+function _getParentDirectory(route) {
+    return path.parse(route).dir;
+}
+
+function _isDirectoryExist(folder) {
+    try {
+        let stat = fs.statSync(folder);
+        return stat.isDirectory();
+    } catch (e) {
+        return false;
     }
 }
 
@@ -22,13 +44,4 @@ function download(url, destination) {
             .pipe(fs.createWriteStream(destination))
             .on('finish', resolve);
     });
-}
-
-function _isFolderExist(folder) {
-    try {
-        let stat = fs.statSync(folder);
-        return stat.isDirectory();
-    } catch (e) {
-        return false;
-    }
 }
