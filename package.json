@@ -26,5 +26,9 @@
     "eslint": "^3.5.0",
     "eslint-config-pb-base": "git+https://github.com/probalazs/eslint-config-pb-base.git",
     "eslint-config-pb-es6": "git+https://github.com/probalazs/eslint-config-pb-es6.git"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "request": "^2.75.0"
   }
 }
