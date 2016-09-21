@@ -6,27 +6,16 @@ const fs = Promise.promisifyAll(require('fs-extra'));
 const path = require('path');
 
 module.exports = {
-    isFileExist: isFileExist,
     isDirectoryExist: isDirectoryExist,
     download: download
 };
 
 function isDirectoryExist(route) {
-    let stat = _getFsStat(route);
-    return stat.isDirectory instanceof Function && stat.isDirectory();
-}
-
-function isFileExist(route) {
-    let stat = _getFsStat(route);
-    return stat.isFile instanceof Function && stat.isFile();
-}
-
-function _getFsStat(route) {
-    try {
-        return fs.statSync(route);
-    } catch (e) {
-        return {};
-    }
+    return new Promise((resolve, reject) => {
+        fs.statAsync(route)
+            .then((stat) => (stat.isDirectory()) ? resolve() : reject())
+            .error(reject);
+    });
 }
 
 function download(url, destination) {
