@@ -1,7 +1,7 @@
 'use strict';
 
 const Promise = require('bluebird');
-const fs = require('fs');
+const fs = Promise.promisifyAll(require('fs'));
 const compressionFactory = require('./utils/compression/compression.factory');
 const path = require('path');
 const file = require('./utils/file');
@@ -44,14 +44,6 @@ module.exports = class NwDownloader {
     }
 
     _clear() {
-        return new Promise((resolve, reject) => {
-            fs.unlink(this._destination, (error) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve();
-                }
-            });
-        });
+        return fs.unlinkAsync(this._destination);
     }
 };
