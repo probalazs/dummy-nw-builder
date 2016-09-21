@@ -1,6 +1,7 @@
 'use strict';
 
-const file = require('../file');
+const Promise = require('bluebird');
+const fs = Promise.promisifyAll(require('fs-extra'));
 
 module.exports = class Compression {
     constructor(compressedFile, destination) {
@@ -9,7 +10,7 @@ module.exports = class Compression {
     }
 
     extract() {
-        file.mkdirWithParents(this._destination);
-        return this._extract();
+        return fs.ensureDirAsync(this._destination)
+            .then(() => this._extract());
     }
 };

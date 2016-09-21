@@ -10,15 +10,10 @@ module.exports = class NwDownloader {
     constructor(config) {
         this._config = config;
         this._destination = this._getDestination();
-        this._createDownloadFolder();
     }
 
     _getDestination() {
         return path.join(this._config.folders.tmp, this._config.nw.file);
-    }
-
-    _createDownloadFolder() {
-        file.mkdirWithParents(this._config.folders.tmp);
     }
 
     download() {
