@@ -32,11 +32,7 @@ module.exports = class NwDownloader {
     }
 
     _isNwExist() {
-        let nwExtractedFolder = path.join(
-            this._config.folders.tmp,
-            this._config.nw.filename
-        );
-        return file.isDirectoryExist(nwExtractedFolder);
+        return file.isDirectoryExist(this._config.folders.nw);
     }
 
     _extract() {

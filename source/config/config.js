@@ -14,14 +14,14 @@ module.exports = class Config {
 
     _getFolders() {
         let config = this._config;
-        let build = path.join(
-            config.buildFolder,
-            `${config.platform}-${config.architecture}`
-        );
         return Object.freeze({
-            build: build,
+            build: path.join(
+                config.buildFolder,
+                `${config.platform}-${config.architecture}`
+            ),
             tmp: config.tmpFolder,
-            source: config.sourceFolder
+            source: config.sourceFolder,
+            nw: path.join(config.tmpFolder, this.nw.filename)
         });
     }
 
