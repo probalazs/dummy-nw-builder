@@ -8,19 +8,20 @@ const path = require('path');
 module.exports = {
     mkdirWithParents: mkdirWithParents,
     isFileExist: isFileExist,
+    isDirectoryExist: isDirectoryExist,
     download: download
 };
 
 function mkdirWithParents(folder) {
     _mkdirParent(folder);
-    if (!_isDirectoryExist(folder)) {
+    if (!isDirectoryExist(folder)) {
         fs.mkdirSync(folder);
     }
 }
 
 function _mkdirParent(route) {
     let parent = _getParentDirectory(route);
-    if (!_isDirectoryExist(parent)) {
+    if (!isDirectoryExist(parent)) {
         mkdirWithParents(parent);
     }
 }
@@ -29,7 +30,7 @@ function _getParentDirectory(route) {
     return path.parse(route).dir;
 }
 
-function _isDirectoryExist(route) {
+function isDirectoryExist(route) {
     let stat = _getFsStat(route);
     return stat.isDirectory instanceof Function && stat.isDirectory();
 }
