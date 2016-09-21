@@ -35,7 +35,7 @@ application builder for nw.js
 ```
 const Builder = require('dummy-nw-builder');
 
-cons config = {
+const config = {
     version: 'v0.16.1',
     architecture: 'x64',
     platform: 'win',
