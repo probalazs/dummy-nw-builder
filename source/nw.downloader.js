@@ -19,7 +19,7 @@ module.exports = class NwDownloader {
     download() {
         return new Promise((resolve) => {
             this._isNwExist()
-                .catch(this._startDownload())
+                .catch(() => this._startDownload())
                 .finally(resolve);
         });
     }
