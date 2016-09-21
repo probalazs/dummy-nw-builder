@@ -17,7 +17,7 @@ application builder for nw.js
 + **platform**:
 	+ type: string
 	+ default value: ''
-	+ valid values: linux, win, mac
+	+ valid values: linux, win, osx
 + **sourceFolder**:
 	+ type: string
 	+ default value: ''
