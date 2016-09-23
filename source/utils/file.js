@@ -7,6 +7,7 @@ const path = require('path');
 
 module.exports = {
     isDirectoryExist: isDirectoryExist,
+    getAbsouluteOf: getAbsouluteOf,
     download: download
 };
 
@@ -16,6 +17,10 @@ function isDirectoryExist(route) {
             .then((stat) => (stat.isDirectory()) ? resolve() : reject())
             .error(reject);
     });
+}
+
+function getAbsouluteOf(route) {
+    return (path.isAbsolute(route)) ? route : path.join(process.cwd(), route);
 }
 
 function download(url, destination) {

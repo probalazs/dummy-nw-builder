@@ -1,5 +1,6 @@
 'use strict';
 
+const clone = require('clone');
 const CONFIG_CONSTANTS = require('./config.constants');
 const platformUtil = require('../utils/platform');
 
@@ -30,13 +31,8 @@ module.exports = class NwConfig {
         return [this._config.host, this._config.version, this.file].join('/');
     }
 
-    constructor(userConfig) {
-        this._config = this._getConfig(userConfig);
-    }
-
-    _getConfig(userConfig) {
-        let config = Object.assign({}, userConfig);
-        return Object.freeze(config);
+    constructor(config) {
+        this._config = clone(config);
     }
 
     _addNwTypeTo(parts) {

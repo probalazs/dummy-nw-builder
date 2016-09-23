@@ -1,28 +1,15 @@
 'use strict';
 
-const path = require('path');
 const validator = require('./validator');
 const NwConfig = require('./nw.config');
+const FoldersConfig = require('./folders.config');
 const CONFIG_CONSTANTS = require('./config.constants');
 
 module.exports = class Config {
     constructor(userConfig) {
         this._config = this._getConfig(userConfig);
-        this.nw = new NwConfig(this._config);
-        this.folders = this._getFolders();
-    }
-
-    _getFolders() {
-        let config = this._config;
-        return Object.freeze({
-            build: path.join(
-                config.buildFolder,
-                `${config.platform}-${config.architecture}`
-            ),
-            tmp: config.tmpFolder,
-            source: config.sourceFolder,
-            nw: path.join(config.tmpFolder, this.nw.filename)
-        });
+        this.nw = Object.freeze(new NwConfig(this._config));
+        this.folders = Object.freeze(new FoldersConfig(this._config, this.nw));
     }
 
     _getConfig(userConfig) {
