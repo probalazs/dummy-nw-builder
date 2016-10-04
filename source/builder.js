@@ -12,8 +12,8 @@ module.exports = class Builder {
 
     build() {
         return this._download()
-            .then(() => this._clearBuildFolder())
-            .then(() => this._merge());
+            .then(() => this._clearBuildFolder());
+            // .then(() => this._merge());
     }
 
     _download() {
@@ -26,8 +26,7 @@ module.exports = class Builder {
     }
 
     _clearBuildFolder() {
-        return fs.removeAsync(this._config.folders.build)
-            .then(() => fs.ensureDir(this._config.folders.build));
+        return fs.emptyDirAsync(this._config.folders.build);
     }
 
     _copy() {
