@@ -1,11 +1,14 @@
 'use strict';
 
+const Promise = require('bluebird');
 const Compression = require('./compression');
-const tarGz = require('tar.gz');
+const targz = Promise.promisifyAll(require('targz'));
 
 module.exports = class CompressionTarGz extends Compression {
     _extract() {
-        return tarGz()
-            .extract(this._file, this._destination);
+        return targz.decompressAsync({
+            src: this._file,
+            dest: this._destination
+        });
     }
 };
