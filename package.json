@@ -1,6 +1,6 @@
 {
   "name": "dummy-nw-builder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "application builder for nw.js",
   "main": "index.js",
   "repository": {
@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/probalazs/dummy-nw-builder#readme",
   "devDependencies": {
-    "eslint": "^3.5.0",
-    "eslint-config-pb-base": "git+https://github.com/probalazs/eslint-config-pb-base.git",
-    "eslint-config-pb-es6": "git+https://github.com/probalazs/eslint-config-pb-es6.git"
+    "eslint": "^3.7.1",
+    "eslint-config-pb-base": "probalazs/eslint-config-pb-base",
+    "eslint-config-pb-es6": "probalazs/eslint-config-pb-es6"
   },
   "dependencies": {
     "bluebird": "^3.4.6",
-    "clone": "^1.0.2",
+    "clone": "^2.0.0",
     "fs-extra": "^0.30.0",
     "request": "^2.75.0",
     "tar.gz": "^1.0.5",
