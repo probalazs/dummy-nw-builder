@@ -1,9 +1,10 @@
 'use strict';
 
-const Config = require('./..//config/config');
+const Config = require('./../config/config');
 const NwDownloader = require('./nw.downloader');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs-extra'));
+const merge = require('./merge');
 
 module.exports = class Builder {
     constructor(userConfig) {
@@ -13,7 +14,7 @@ module.exports = class Builder {
     build() {
         return this._download()
             .then(() => this._clearBuildFolder())
-            .then(() => this._merge());
+            .then(() => merge(this._config));
     }
 
     _download() {
@@ -21,25 +22,7 @@ module.exports = class Builder {
         return downloader.download();
     }
 
-    _merge() {
-        return Promise.all(this._copy());
-    }
-
     _clearBuildFolder() {
         return fs.emptyDirAsync(this._config.folders.build);
-    }
-
-    _copy() {
-        let copySources = this._getCopySources();
-        return copySources.map((source) => {
-            return fs.copyAsync(source, this._config.folders.build);
-        });
-    }
-
-    _getCopySources() {
-        return [
-            this._config.folders.nw,
-            this._config.folders.source
-        ];
     }
 };
