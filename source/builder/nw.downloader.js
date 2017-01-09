@@ -2,9 +2,9 @@
 
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs-extra'));
-const compressionFactory = require('./utils/compression/compression.factory');
+const compressionFactory = require('./../utils/compression/compression.factory');
 const path = require('path');
-const file = require('./utils/file');
+const file = require('./../utils/file');
 
 module.exports = class NwDownloader {
     constructor(config) {

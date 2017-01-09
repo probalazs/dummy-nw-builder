@@ -1,6 +1,6 @@
 'use strict';
 
-const Config = require('./config/config');
+const Config = require('./..//config/config');
 const NwDownloader = require('./nw.downloader');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs-extra'));
