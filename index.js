@@ -1,4 +1,4 @@
 'use strict';
 
-require('./polyfills/all.js');
+require('./polyfills');
 module.exports = require('./source/builder');
