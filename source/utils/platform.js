@@ -1,11 +1,9 @@
 'use strict';
 
-const PLATFORMS = require('../config/config.constants').VALID_VALUES.platform;
-
 module.exports = {
-    isLinux: isPlatform.bind(null, PLATFORMS.linux),
-    isWindows: isPlatform.bind(null, PLATFORMS.windows),
-    isOsx: isPlatform.bind(null, PLATFORMS.osx)
+    isLinux: isPlatform.bind(null, 'linux'),
+    isWindows: isPlatform.bind(null, 'win32'),
+    isOsx: isPlatform.bind(null, 'darwin')
 };
 
 function isPlatform(required, toBeTested) {
