@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/probalazs/dummy-nw-builder#readme",
   "devDependencies": {
-    "decompress": "^4.0.0",
     "eslint": "^3.7.1",
     "eslint-config-pb-base": "probalazs/eslint-config-pb-base",
     "eslint-config-pb-es6": "probalazs/eslint-config-pb-es6"
@@ -28,6 +27,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "clone": "^2.0.0",
+    "decompress": "^4.0.0",
     "fs-extra": "^0.30.0",
     "request": "^2.75.0"
   }
